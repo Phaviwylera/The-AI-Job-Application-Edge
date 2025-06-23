@@ -7,10 +7,10 @@
     <meta name="google-adsense-account" content="ca-pub-7060586285331493">
 
     <!-- Chosen Palette: Calm Tech -->
-    <!-- Application Structure Plan: The application is structured into four thematic, non-linear sections to facilitate user exploration: 1) 'The AI Advantage' visually explains the 'how' with an interactive flowchart and a comparative data chart, now with key takeaways. 2) 'The AI Toolkit' provides a practical 'what' with an enhanced filterable and searchable gallery of tools, including mock popularity, and now features an interactive modal for 'Buy Toolkit' functionality, simulating name/email capture, payment redirection, and a final mock download link. 3) 'Best Practices' offers an actionable 'how-to' guide using a clear Do's and Don'ts format, now with toggleable examples for each point. 4) 'Ethical Guide' addresses the 'warnings' through an interactive accordion, now with actionable steps and subtle icons for improved clarity. This user-centric structure prioritizes understanding and engagement over simply replicating the report's linear format, allowing users to dive into the sections most relevant to them and interact more deeply with the content. -->
+    <!-- Application Structure Plan: The application is structured into four thematic, non-linear sections to facilitate user exploration: 1) 'The AI Advantage' visually explains the 'how' with an interactive flowchart and a comparative data chart, now with key takeaways. 2) 'The AI Toolkit' provides a practical 'what' with an enhanced filterable and searchable gallery of tools, including mock popularity, and now features an interactive modal for 'Buy Toolkit' functionality, which captures user data and sends it to a backend, then simulates payment and download. 3) 'Best Practices' offers an actionable 'how-to' guide using a clear Do's and Don'ts format, now with toggleable examples for each point. 4) 'Ethical Guide' addresses the 'warnings' through an interactive accordion, now with actionable steps and subtle icons for improved clarity. This user-centric structure prioritizes understanding and engagement over simply replicating the report's linear format, allowing users to dive into the sections most relevant to them and interact more deeply with the content. -->
     <!-- Visualization & Content Choices:
         - Report Info: Success Rate Data (Table 1) -> Goal: Compare & Summarize -> Viz: Bar Chart with Key Takeaways -> Interaction: Hover tooltips -> Justification: Provides a clear, immediate visual comparison and explicit summary of outcomes. -> Library: Chart.js.
-        - Report Info: AI Tool List (Table 2) -> Goal: Organize/Inform & Discover & Purchase -> Viz: Filterable & Searchable Card Grid with Mock Popularity and 'Buy Toolkit' modal -> Interaction: Click filters, type search query, click 'Buy Toolkit' to open modal, fill form, simulate payment/download -> Justification: More engaging and user-friendly than a static table, allowing users to find relevant tools quickly through multiple access points and understand how to acquire them, with a simulated purchase flow. -> Library: Vanilla JS.
+        - Report Info: AI Tool List (Table 2) -> Goal: Organize/Inform & Discover & Purchase -> Viz: Filterable & Searchable Card Grid with Mock Popularity and 'Buy Toolkit' modal -> Interaction: Click filters, type search query, click 'Buy Toolkit' to open modal, fill form, send data to backend, simulate payment/download -> Justification: More engaging and user-friendly than a static table, allowing users to find relevant tools quickly through multiple access points and understand how to acquire them, with a backend-integrated purchase flow. -> Library: Vanilla JS.
         - Report Info: Ethical Concerns (Table 3) -> Goal: Organize/Inform & Action -> Viz: Accordion with Actionable Steps & Icons -> Interaction: Click to expand/collapse -> Justification: Prevents information overload, adds visual appeal, and empowers users with practical advice. -> Library: Vanilla JS.
         - Report Info: Job Application Process -> Goal: Explain a process & Detail -> Viz: HTML/CSS Flowchart with Dynamic Info Box -> Interaction: Clickable steps revealing more info -> Justification: Visually simplifies a complex workflow and provides detailed context for each stage. -> Library: Vanilla JS.
         - Report Info: Best Practices (Do's/Don'ts) -> Goal: Instruct & Illustrate -> Viz: Dual Column Lists with Toggleable Examples -> Interaction: Click 'See Example' -> Justification: Makes abstract advice concrete and actionable, enhancing learning. -> Library: Vanilla JS.
@@ -396,18 +396,18 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const toolsData = [
-        { name: 'LazyApply', category: 'automation', description: 'Automates applications across multiple platforms like LinkedIn, Indeed, and ZipRecruiter.', rating: 4.5, paymentLink: 'https://your-payment-gateway.com/pay/lazyapply', zipFile: 'lazyapply-toolkit.zip' },
-        { name: 'Sonara.ai', category: 'automation', description: 'A full job search automation platform that continuously finds and applies to relevant openings.', rating: 4.7, paymentLink: 'https://your-payment-gateway.com/pay/sonara-ai', zipFile: 'sonara-ai-toolkit.zip' },
-        { name: 'Simplify', category: 'automation', description: 'A popular tool for auto-filling job applications, saving time on repetitive data entry.', rating: 4.2, paymentLink: 'https://your-payment-gateway.com/pay/simplify', zipFile: 'simplify-toolkit.zip' },
-        { name: 'Teal', category: 'copilot', description: 'Tracks applications, optimizes resumes, and suggests relevant jobs. Includes a Chrome extension.', rating: 4.6, paymentLink: 'https://your-payment-gateway.com/pay/teal', zipFile: 'teal-toolkit.zip' },
-        { name: 'BeamJobs', category: 'writing', description: 'Generates customized cover letters by combining your resume with the job description.', rating: 4.0, paymentLink: 'https://your-payment-gateway.com/pay/beamjobs', zipFile: 'beamjobs-toolkit.zip' },
-        { name: 'Kickresume', category: 'writing', description: 'Creates eye-catching, ATS-friendly resumes and cover letters from templates with AI-generated text.', rating: 4.3, paymentLink: 'https://your-payment-gateway.com/pay/kickresume', zipFile: 'kickresume-toolkit.zip' },
-        { name: 'Grammarly', category: 'writing', description: 'AI-powered writing assistant that can generate cover letter drafts and check for clarity.', rating: 4.8, paymentLink: 'https://your-payment-gateway.com/pay/grammarly', zipFile: 'grammarly-toolkit.zip' },
-        { name: 'Jobright', category: 'copilot', description: 'AI job search copilot that helps find jobs, edit resumes, and identify insider referrals.', rating: 4.1, paymentLink: 'https://your-payment-gateway.com/pay/jobright', zipFile: 'jobright-toolkit.zip' },
-        { name: 'Jobscan', category: 'writing', description: 'Analyzes your resume against a job description to give you a match score and optimization tips.', rating: 4.4, paymentLink: 'https://your-payment-gateway.com/pay/jobscan', zipFile: 'jobscan-toolkit.zip' },
-        { name: 'Resume.io', category: 'writing', description: 'Offers AI-powered suggestions for resume and cover letter content.', rating: 4.2, paymentLink: 'https://your-payment-gateway.com/pay/resume-io', zipFile: 'resume-io-toolkit.zip' },
-        { name: 'Eightfold.ai', category: 'copilot', description: 'Uses AI to match candidates with jobs and helps companies with talent acquisition.', rating: 4.6, paymentLink: 'https://your-payment-gateway.com/pay/eightfold-ai', zipFile: 'eightfold-ai-toolkit.zip' },
-        { name: 'Hiretual', category: 'copilot', description: 'An AI-powered talent sourcing and engagement platform.', rating: 4.5, paymentLink: 'https://your-payment-gateway.com/pay/hiretual', zipFile: 'hiretual-toolkit.zip' },
+        { name: 'LazyApply', category: 'automation', description: 'Automates applications across multiple platforms like LinkedIn, Indeed, and ZipRecruiter.', rating: 4.5, paymentLink: 'https://your-payment-gateway.com/pay/lazyapply', zipFile: 'lazyapply-toolkit.zip', purchaseInfo: 'Visit LazyApply\'s official website to subscribe and gain full access to premium features.' },
+        { name: 'Sonara.ai', category: 'automation', description: 'A full job search automation platform that continuously finds and applies to relevant openings.', rating: 4.7, paymentLink: 'https://your-payment-gateway.com/pay/sonara-ai', zipFile: 'sonara-ai-toolkit.zip', purchaseInfo: 'Sonara.ai offers various plans. Check their site for pricing and feature tiers.' },
+        { name: 'Simplify', category: 'automation', description: 'A popular tool for auto-filling job applications, saving time on repetitive data entry.', rating: 4.2, paymentLink: 'https://your-payment-gateway.com/pay/simplify', zipFile: 'simplify-toolkit.zip', purchaseInfo: 'Simplify is often available as a browser extension. Check your browser\'s app store.' },
+        { name: 'Teal', category: 'copilot', description: 'Tracks applications, optimizes resumes, and suggests relevant jobs. Includes a Chrome extension.', rating: 4.6, paymentLink: 'https://your-payment-gateway.com/pay/teal', zipFile: 'teal-toolkit.zip', purchaseInfo: 'Explore Teal\'s website for a free tier and premium subscriptions.' },
+        { name: 'BeamJobs', category: 'writing', description: 'Generates customized cover letters by combining your resume with the job description.', rating: 4.0, paymentLink: 'https://your-payment-gateway.com/pay/beamjobs', zipFile: 'beamjobs-toolkit.zip', purchaseInfo: 'BeamJobs typically offers a trial period, followed by a paid subscription.' },
+        { name: 'Kickresume', category: 'writing', description: 'Creates eye-catching, ATS-friendly resumes and cover letters from templates with AI-generated text.', rating: 4.3, paymentLink: 'https://your-payment-gateway.com/pay/kickresume', zipFile: 'kickresume-toolkit.zip', purchaseInfo: 'Kickresume has free templates and a paid premium service for advanced features.' },
+        { name: 'Grammarly', category: 'writing', description: 'AI-powered writing assistant that can generate cover letter drafts and check for clarity.', rating: 4.8, paymentLink: 'https://your-payment-gateway.com/pay/grammarly', zipFile: 'grammarly-toolkit.zip', purchaseInfo: 'Grammarly offers free and premium versions. Purchase premium for full capabilities.' },
+        { name: 'Jobright', category: 'copilot', description: 'AI job search copilot that helps find jobs, edit resumes, and identify insider referrals.', rating: 4.1, paymentLink: 'https://your-payment-gateway.com/pay/jobright', zipFile: 'jobright-toolkit.zip', purchaseInfo: 'Jobright often operates on a subscription model. Visit their platform for details.' },
+        { name: 'Jobscan', category: 'writing', description: 'Analyzes your resume against a job description to give you a match score and optimization tips.', rating: 4.4, paymentLink: 'https://your-payment-gateway.com/pay/jobscan', zipFile: 'jobscan-toolkit.zip', purchaseInfo: 'Jobscan offers a limited free scan, with premium features requiring a subscription.' },
+        { name: 'Resume.io', category: 'writing', description: 'Offers AI-powered suggestions for resume and cover letter content.', rating: 4.2, paymentLink: 'https://your-payment-gateway.com/pay/resume-io', zipFile: 'resume-io-toolkit.zip', purchaseInfo: 'Resume.io provides various plans, including one-time purchases and monthly subscriptions.' },
+        { name: 'Eightfold.ai', category: 'copilot', description: 'Uses AI to match candidates with jobs and helps companies with talent acquisition.', rating: 4.6, paymentLink: 'https://your-payment-gateway.com/pay/eightfold-ai', zipFile: 'eightfold-ai-toolkit.zip', purchaseInfo: 'Eightfold.ai is primarily an enterprise solution; individual access may be via partner platforms.' },
+        { name: 'Hiretual', category: 'copilot', description: 'An AI-powered talent sourcing and engagement platform.', rating: 4.5, paymentLink: 'https://your-payment-gateway.com/pay/hiretual', zipFile: 'hiretual-toolkit.zip', purchaseInfo: 'Hiretual is a recruitment platform for businesses; inquire directly for access options.' },
     ];
 
     const ethicsData = [
@@ -559,15 +559,44 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Simulate redirection to payment gateway
-        modalFormContent.classList.add('hidden');
-        modalPaymentContent.classList.remove('hidden');
-        toolkitNamePayment.textContent = selectedTool.name;
-        
-        // In a real scenario, you'd redirect to selectedTool.paymentLink here:
-        // window.location.href = selectedTool.paymentLink;
-        
-        console.log(`Proceeding to payment for ${selectedTool.name}. Name: ${userName}, Email: ${userEmail}`);
+        const userData = {
+            name: userName,
+            email: userEmail,
+            toolkit: selectedTool.name // Send the toolkit name too
+        };
+
+        // --- START: NEW FETCH API CALL TO YOUR BACKEND ---
+        // IMPORTANT: Replace 'https://YOUR-RENDER-BACKEND-URL.onrender.com' with your actual Render backend URL
+        fetch('https://ai-toolkit-backend-nodejs.onrender.com', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+        })
+        .then(response => {
+            if (!response.ok) {
+                // If the response is not OK (e.g., 400, 500), parse the error message from the backend
+                return response.json().then(err => { throw new Error(err.error || 'Failed to capture data'); });
+            }
+            return response.json(); // Parse the successful response
+        })
+        .then(data => {
+            console.log('User data saved to backend:', data);
+            // --- CONTINUE WITH YOUR EXISTING MODAL FLOW AFTER SUCCESS ---
+            modalFormContent.classList.add('hidden');
+            modalPaymentContent.classList.remove('hidden');
+            toolkitNamePayment.textContent = selectedTool.name;
+            // In a real scenario, you would redirect to the actual payment gateway here:
+            // window.location.href = selectedTool.paymentLink;
+        })
+        .catch((error) => {
+            // Handle any network errors or errors thrown from the .then blocks
+            console.error('Error sending user data to backend:', error);
+            alert(`There was an error processing your request: ${error.message}. Please try again.`);
+            // Optionally keep the form open or show a specific error message within the modal
+        });
+        // --- END: NEW FETCH API CALL ---
     });
 
     simulatePaymentBtn.addEventListener('click', () => {
